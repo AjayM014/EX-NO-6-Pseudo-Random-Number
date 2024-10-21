@@ -1,57 +1,63 @@
-# EX-NO-6-Pseudo-Random-Number
+## Date:
+# Exp-06-Implementation of Pseudorandom Number Generation using Standard library
 
-# AIM: 
+## AIM:
+To implement Pseudorandom Number Generation using Standard Library.
 
-Implementation of Pseudorandom Number Generation Using Standard library
+## ALGORITHM:
+### Step 1:
+Get the number of random numbers to generate from the user.
 
-# Algorithm:
-Algorithm for Pseudorandom Number Generation:
+### Step 2:
+Read the minimum and maximum values for the random number range.
 
-Accept user input for the number of random numbers (count), minimum value (min), and maximum value (max).
+### Step 3:
+Initialize the random seed using the current time.
 
-Initialize the random seed using the current time (srand(time(NULL))).
+### Step 4:
+Generate a random number by calculating the remainder of division with the range (max - min + 1) and adding the minimum value.
 
-Start a loop that runs count times to generate random numbers.
+### Step 5:
+Repeat the random number generation for the specified count.
 
-In each iteration, calculate a random number between min and max using the formula (rand() % (max - min + 1)) + min
+### Step 6:
+Print each generated random number.
 
-Print the generated random number.
+### Step 7:
+End the program.
 
-Repeat until count random numbers are generated, then terminate the program.
-
-# Program
-```C
-NAME: AJAY M
-REG NO: 212223040009
-
+## PROGRAM:
+```c
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
-int main() 
-{
-    int count, min, max;
-    printf("Enter the number of random numbers to generate: ");
-    scanf("%d", &count);
-    printf("Enter the minimum value: ");
-    
-    scanf("%d", &min);
-    printf("Enter the maximum value: ");
-    scanf("%d", &max);
-    srand(time(NULL));
-    printf("Pseudorandom numbers:\n");   
-    for (int i = 0; i < count; i++) 
-    {
-        int random_number = (rand() % (max - min + 1)) + min;
-        printf("%d ", random_number);
+#define A 1664525
+#define C 1013904223
+#define M 4294967296 // 2^32
+
+unsigned int lcg(unsigned int seed) {
+    return (A * seed + C) % M;
+}
+
+int main() {
+    unsigned int seed;
+    int n, i;
+    printf("  ***Pseudorandom number generator***\n\n");
+    printf("Enter the seed value: ");
+    scanf("%u", &seed);
+    printf("Enter how many random numbers to generate: ");
+    scanf("%d", &n);
+    printf("Random numbers:\n");
+    for (i = 0; i < n; i++) {
+        seed = lcg(seed);
+        printf("%u\n", seed);
     }
     return 0;
 }
 ```
-# OUTPUT:
-![Screenshot 2024-10-17 124518](https://github.com/user-attachments/assets/eaaaa4fb-8d5e-4324-abd1-91c15ac1c25c)
-
-# RESULT:
-This the output for the given program
+## Output:
+![Screenshot 2024-10-21 090319](https://github.com/user-attachments/assets/71102929-38cd-4533-83be-b0af140b4082)
 
 
+
+## Result :
+The program for Pseudorandom Number Generation is executed successfully
